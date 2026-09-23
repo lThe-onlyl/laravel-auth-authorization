@@ -1,19 +1,19 @@
 # Laravel Auth & Authorization
 
-Учебный проект на Laravel, демонстрирующий механизмы аутентификации, авторизации и ролевой модели пользователей.
+An educational Laravel project demonstrating user authentication, authorization, and role-based access control.
 
-## Реализовано
+## Features
 
-- Регистрация и авторизация пользователей с Laravel Breeze
-- Аутентификация пользователей
-- Ролевая модель `user` / `admin`
-- Поле `is_admin` в таблице `users`
-- `UserPolicy` для проверки прав пользователя
-- Авторизация доступа к списку пользователей
-- Защищённый маршрут `/users`
-- Проверка доступа для неавторизованных пользователей, обычных пользователей и администраторов
+- User registration and authentication with Laravel Breeze
+- User authentication
+- Role-based access control with `user` and `admin` roles
+- `is_admin` field in the `users` table
+- `UserPolicy` for checking user permissions
+- Authorization for accessing the user list
+- Protected `/users` route
+- Access control testing for unauthenticated users, regular users, and administrators
 
-## Технологии
+## Technologies
 
 - PHP
 - Laravel
@@ -24,69 +24,69 @@
 - JavaScript
 - CSS
 
-## Установка
+## Installation
 
-Клонировать репозиторий:
+Clone the repository:
 
 ```bash
 git clone https://github.com/lThe-onlyl/laravel-auth-authorization.git
 cd laravel-auth-authorization
 ```
 
-Установить зависимости:
+Install dependencies:
 
 ```bash
 composer install
 npm install
 ```
 
-Создать файл `.env`:
+Create the `.env` file:
 
 ```bash
 cp .env.example .env
 ```
 
-Сгенерировать ключ приложения:
+Generate the application key:
 
 ```bash
 php artisan key:generate
 ```
 
-Настроить подключение к MySQL в `.env`.
+Configure your MySQL database connection in `.env`.
 
-Создать таблицы базы данных:
+Run the database migrations:
 
 ```bash
 php artisan migrate
 ```
 
-Собрать frontend:
+Build the frontend:
 
 ```bash
 npm run build
 ```
 
-Запустить приложение:
+Start the development server:
 
 ```bash
 php artisan serve
 ```
 
-После запуска приложение будет доступно по адресу:
+The application will be available at:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-## Основной маршрут
+## Main Route
 
 ```text
 /users
 ```
 
-Маршрут возвращает список пользователей только администратору системы.
+The route returns a list of all registered users and is accessible only to administrators.
 
-Проверка доступа выполняется через `UserPolicy`:
+Authorization is handled through `UserPolicy`:
 
 ```php
 public function viewAny(User $user): bool

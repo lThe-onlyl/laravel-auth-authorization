@@ -1,6 +1,6 @@
-# Laravel Auth & Authorization
+# Laravel Auth, Authorization & Product API
 
-An educational Laravel project demonstrating user authentication, authorization, role-based access control, and external service notifications.
+An educational Laravel project demonstrating user authentication, authorization, role-based access control, external service notifications, and a RESTful Product API.
 
 ## Features
 
@@ -16,6 +16,33 @@ An educational Laravel project demonstrating user authentication, authorization,
 - Event and Listener implementation for registration notifications
 - SMTP email integration
 - Telegram Bot API integration
+- Product CRUD REST API
+- Product model, migration, factory, and seeder
+- API validation for creating and updating products
+- Feature tests for all Product API operations
+- Postman API testing
+
+## Product API
+
+The project provides a RESTful API for managing products.
+
+### Available endpoints
+
+| Method    | Endpoint                  | Description          |
+| --------- | ------------------------- | -------------------- |
+| GET       | `/api/products`           | Get all products     |
+| GET       | `/api/products/{product}` | Get a single product |
+| POST      | `/api/products`           | Create a product     |
+| PUT/PATCH | `/api/products/{product}` | Update a product     |
+| DELETE    | `/api/products/{product}` | Delete a product     |
+
+### Product fields
+
+- `sku` — product SKU
+- `name` — product name
+- `price` — product price
+
+Products can be generated using the `ProductFactory` and `ProductsSeeder`.
 
 ## Technologies
 
@@ -27,8 +54,10 @@ An educational Laravel project demonstrating user authentication, authorization,
 - Vite
 - JavaScript
 - CSS
+- REST API
 - SMTP
 - Telegram Bot API
+- Postman
 
 ## Installation
 
@@ -100,6 +129,12 @@ Run the database migrations:
 php artisan migrate
 ```
 
+Seed the Product data:
+
+```bash
+php artisan db:seed --class=ProductsSeeder
+```
+
 Build the frontend:
 
 ```bash
@@ -142,3 +177,27 @@ After a new user registers, the application sends:
 - A welcome email using Laravel Mail and SMTP
 - A Telegram notification using the Telegram Bot API
 - Registration notifications are handled through the `UserRegistered` event and `UserRegisteredListener`
+
+## Testing
+
+Run the complete test suite with:
+
+```bash
+php artisan test
+```
+
+The project includes tests for:
+
+- Authentication
+- Authorization
+- User registration
+- Profile management
+- Product API operations
+
+The Product API tests cover:
+
+- Listing products
+- Showing a product
+- Creating a product
+- Updating a product
+- Deleting a product
